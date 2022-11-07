@@ -1,10 +1,28 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes/Route/Route";
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "./contexts/ThemeProvider";
+import { getStoredDarkModeData } from "./utils/fakeDb";
 
 function App() {
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const storedDarkModeData = getStoredDarkModeData();
+    setDarkMode(storedDarkModeData);
+  }, []);
+
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div
+      className={
+        darkMode
+          ? `"App dark min-h-screen max-w-7xl mx-auto"`
+          : `"App min-h-screen max-w-7xl mx-auto"`
+      }
+    >
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
