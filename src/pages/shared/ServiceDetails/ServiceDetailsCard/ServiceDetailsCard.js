@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "flowbite-react";
+
 const ServiceDetailsCard = ({ service }) => {
   const { _id, image, title, description, price, rating } = service;
   const priceWithCommas = price.toLocaleString("en");

@@ -2,6 +2,7 @@ import { Button, Card } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ServiceCard.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceCard = ({ service }) => {
   const { _id, title, price, description, image, rating } = service;
@@ -9,7 +10,12 @@ const ServiceCard = ({ service }) => {
 
   return (
     <div className="max-w-sm">
-      <Card className="serviceCard  " imgSrc={image}>
+      <Card className="serviceCard  ">
+        <PhotoProvider>
+          <PhotoView src={image}>
+            <img src={image} className="rounded-lg" alt="" />
+          </PhotoView>
+        </PhotoProvider>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white h-16 capitalize">
           {title}
         </h5>

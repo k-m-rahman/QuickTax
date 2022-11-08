@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./contexts/AuthProvider";
 import ThemeProvider from "./contexts/ThemeProvider";
+import "react-photo-view/dist/react-photo-view.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
