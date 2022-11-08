@@ -7,9 +7,11 @@ const ServiceDetailsCard = ({ service }) => {
   return (
     <div className="flex justify-center ">
       <Card
-        className="card bg-fuchsia-100 mx-5 md:mx-0 lg:min-w-[900px]"
+        className="card bg-[rgb(252,241,255)] mx-5 md:mx-0 lg:min-w-[900px]"
         horizontal={true}
         imgSrc={image}
+        data-aos="zoom-in-up"
+        data-aos-duration="800"
       >
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
           {title}

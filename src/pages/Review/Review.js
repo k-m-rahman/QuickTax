@@ -15,7 +15,7 @@ const Review = ({ reviewDetails }) => {
   } = reviewDetails;
   return (
     <div className="mx-auto w-full">
-      <Card className="bg-slate-300 rounded-3xl">
+      <Card className="bg-[rgb(203,213,225)] rounded-3xl">
         <div className="flex flex-col  pb-10">
           <div className="flex gap-5">
             <img

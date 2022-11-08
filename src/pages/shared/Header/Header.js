@@ -45,8 +45,8 @@ const Header = () => {
   };
 
   return (
-    <div className="shadow-md md:pb-5 lg:pb-0 bg-violet-300 text-center sticky top-0 z-10 dark:bg-slate-800">
-      <Navbar className="bg-violet-300  rounded-none pt-4 pb-6 " fluid={true}>
+    <div className="shadow-md md:pb-5 lg:pb-0 bg-[#c1c2ff] text-center sticky top-0 z-10 dark:bg-slate-800">
+      <Navbar className="bg-[#c1c2ff]  rounded-none pt-4 pb-6 " fluid={true}>
         <NavLink className="flex " to="/">
           <div className="flex gap-2">
             <span className="bg-amber-500 p-2 rounded-full">
