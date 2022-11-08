@@ -51,7 +51,7 @@ const CommonFooter = () => {
               <Footer.Link className="text-white">Contact</Footer.Link>
             </Footer.LinkGroup>
           </div>
-          <Footer.Divider className="dark:border-white" />
+          <hr className="bg-slate-200 opacity-75 my-6" />
           <Footer.Copyright
             className="text-slate-300"
             by="QuickTax"

@@ -14,18 +14,19 @@ import { addDarkModeDataToDb } from "../../../utils/fakeDb";
 import { FaMoon, FaSun, FaSearch } from "react-icons/fa";
 import logo from "../../../assets/tax.svg";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const handleSearchProduct = (event) => {
+  const handleSearchService = (event) => {
     event.preventDefault();
     const form = event.target;
-    const gadgetName = form.gadgetName.value;
+    const service = form.service.value;
     form.reset();
-    navigate(`/searchedProducts/${gadgetName}`);
+    navigate(`/searchedServices/${service}`);
   };
 
   const themeChanger = () => {
@@ -33,13 +34,19 @@ const Header = () => {
     addDarkModeDataToDb(!darkMode);
   };
 
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.error("Logged Out!");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
-    <div className="shadow-md md:pb-5 lg:pb-0 bg-cyan-400 text-center sticky top-0 z-10 dark:bg-slate-800">
-      <Navbar
-        className="bg-cyan-400  rounded-none  py-7"
-        fluid={true}
-        rounded={true}
-      >
+    <div className="shadow-md md:pb-5 lg:pb-0 bg-violet-300 text-center sticky top-0 z-10 dark:bg-slate-800">
+      <Navbar className="bg-violet-300  rounded-none pt-4 pb-6 " fluid={true}>
         <NavLink className="flex " to="/">
           <div className="flex gap-2">
             <span className="bg-amber-500 p-2 rounded-full">
@@ -55,13 +62,13 @@ const Header = () => {
         <Navbar.Collapse>
           <ScrollRestoration></ScrollRestoration>
           <form
-            onSubmit={handleSearchProduct}
+            onSubmit={handleSearchService}
             className="relative mb-2 lg:mb-0 md:hidden lg:block"
           >
             <TextInput
               className=" lg:w-[300px] "
-              id="gadgetName"
-              name="gadgetName"
+              id="service"
+              name="service"
               type="text"
               placeholder="Search your desired service"
             />
@@ -75,8 +82,8 @@ const Header = () => {
           <NavLink
             className={({ isActive }) =>
               !isActive
-                ? "bg-cyan-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
-                : "bg-cyan-400 border border-cyan-600 p-2 rounded-md sm:hover:scale-110 mb-1"
+                ? "bg-violet-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
+                : "bg-violet-400 font-bold  p-2 rounded-md sm:hover:scale-110 mb-1"
             }
             to="/services"
           >
@@ -86,8 +93,8 @@ const Header = () => {
           <NavLink
             className={({ isActive }) =>
               !isActive
-                ? "bg-cyan-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
-                : "bg-cyan-400 border border-cyan-600 p-2 rounded-md sm:hover:scale-110 mb-1"
+                ? "bg-violet-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
+                : "bg-violet-400 font-bold  p-2 rounded-md sm:hover:scale-110 mb-1"
             }
             to="/blogs"
           >
@@ -99,8 +106,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   !isActive
-                    ? "bg-cyan-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
-                    : "bg-cyan-400 border border-cyan-600 p-2 rounded-md sm:hover:scale-110 mb-1"
+                    ? "bg-violet-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
+                    : "bg-violet-400 font-bold  p-2 rounded-md sm:hover:scale-110 mb-1"
                 }
                 to="/myReviews"
               >
@@ -109,8 +116,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   !isActive
-                    ? "bg-cyan-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
-                    : "bg-cyan-400 border border-cyan-600 p-2 rounded-md sm:hover:scale-110 mb-1"
+                    ? "bg-violet-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
+                    : "bg-violet-400 font-bold  p-2 rounded-md sm:hover:scale-110 mb-1"
                 }
                 to="/addService"
               >
@@ -122,20 +129,12 @@ const Header = () => {
                   arrowIcon={false}
                   inline={true}
                   label={
-                    <Tooltip
-                      content={
-                        user?.displayName
-                          ? `${user?.displayName}`
-                          : "Name not available"
-                      }
-                    >
-                      <Avatar
-                        className="border border-gray-300  rounded-full sm:hover:scale-110"
-                        alt="User "
-                        img={user?.photoURL}
-                        rounded={true}
-                      />
-                    </Tooltip>
+                    <Avatar
+                      className="border border-gray-300  rounded-full sm:hover:scale-110"
+                      alt="User "
+                      img={user?.photoURL}
+                      rounded={true}
+                    />
                   }
                 >
                   <Dropdown.Header>
@@ -150,7 +149,7 @@ const Header = () => {
                   </Dropdown.Header>
 
                   <Dropdown.Item>
-                    <button>Sign out</button>
+                    <button onClick={handleLogout}>Sign out</button>
                   </Dropdown.Item>
                 </Dropdown>
               </span>
@@ -159,8 +158,8 @@ const Header = () => {
             <NavLink
               className={({ isActive }) =>
                 !isActive
-                  ? "bg-cyan-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
-                  : "bg-cyan-400 border border-cyan-600 p-2 rounded-md sm:hover:scale-110 mb-1"
+                  ? "bg-violet-100 p-2 rounded-md  sm:hover:scale-110 mb-1"
+                  : "bg-violet-400 font-bold  p-2 rounded-md sm:hover:scale-110 mb-1"
               }
               to="/login"
             >
@@ -169,7 +168,7 @@ const Header = () => {
           )}
 
           <Button
-            className="w-1/6 mx-auto mt-1 lg:w-full"
+            className="w-[50px] mx-auto mt-1 md:hidden lg:block"
             onClick={themeChanger}
             color={darkMode ? `dark` : `light`}
           >
@@ -177,12 +176,12 @@ const Header = () => {
           </Button>
         </Navbar.Collapse>
       </Navbar>
-      <div className="mt-1 w-1/2 mx-auto  hidden md:block lg:hidden">
-        <form onSubmit={handleSearchProduct} className="relative ">
+      <div className="mt-1 w-1/2 mx-auto  hidden md:grid grid-cols-6 gap-2 lg:hidden">
+        <form onSubmit={handleSearchService} className="relative col-span-5">
           <TextInput
             className=" lg:w-[300px] "
-            id="gadgetName"
-            name="gadgetName"
+            id="service"
+            name="service"
             type="text"
             placeholder="Search your desired service"
           />
@@ -193,6 +192,13 @@ const Header = () => {
             <FaSearch></FaSearch>
           </button>
         </form>
+        <Button
+          className="w-[50px] mx-auto mt-1 "
+          onClick={themeChanger}
+          color={darkMode ? `dark` : `light`}
+        >
+          {darkMode ? <FaSun></FaSun> : <FaMoon></FaMoon>}
+        </Button>
       </div>
     </div>
   );
