@@ -17,19 +17,21 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services?limit=3"),
+        loader: () =>
+          fetch("https://quick-tax-server-side.vercel.app/services?limit=3"),
       },
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services/"),
+        loader: () =>
+          fetch("https://quick-tax-server-side.vercel.app/services/"),
       },
       {
         path: "/searchedServices/:searchQuery",
         element: <SearchedServices></SearchedServices>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/services?searchQuery=${params.searchQuery}`
+            `https://quick-tax-server-side.vercel.app/services?searchQuery=${params.searchQuery}`
           ),
       },
       {
@@ -52,7 +54,9 @@ export const router = createBrowserRouter([
         path: "/serviceDetails/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://quick-tax-server-side.vercel.app/services/${params.id}`
+          ),
       },
     ],
   },

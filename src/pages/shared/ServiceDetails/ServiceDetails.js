@@ -1,31 +1,40 @@
-import { Card } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Review from "../../Review/Review";
 import "./ServiceDetails.css";
+import ServiceDetailsCard from "./ServiceDetailsCard/ServiceDetailsCard";
 const ServiceDetails = () => {
   const service = useLoaderData();
-  const { _id, image, title, description, price, rating } = service;
-  const priceWithCommas = price.toLocaleString("en");
+  const { _id } = service;
+
+  const [reviews, setReviews] = useState(null);
+  const [forUpdate, setForUpdate] = useState(false);
+
+  useEffect(() => {
+    fetch(
+      `https://quick-tax-server-side-k-m-rahman.vercel.app/reviews?serviceId=${_id}`
+    )
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [_id]);
+
+  console.log(reviews);
   return (
     <div>
-      <div className="flex justify-center ">
-        <Card
-          className="card bg-fuchsia-100 mx-5 md:mx-0 lg:min-w-[900px]"
-          horizontal={true}
-          imgSrc={image}
-        >
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
-            {title}
-          </h5>
-          <h4 className="text-amber-400  font-bold text-xl flex flex-col gap-2 ">
-            <span>Rating: {rating}</span>
-            <span> ${priceWithCommas}</span>
-          </h4>
+      {/* service details card */}
+      <ServiceDetailsCard key={_id} service={service}></ServiceDetailsCard>
 
-          <p className="font-medium text-gray-700 dark:text-gray-400">
-            {description}
-          </p>
-        </Card>
+      {/* reviews */}
+      <h3 className="capitalize mt-20 text-center text-3xl w-3/4 mx-auto md:text-4xl font-bold dark:text-slate-100 italic">
+        Reviews of our valued clients
+      </h3>
+      <div className="grid grid-cols-1 w-3/4 mx-auto my-10 gap-5">
+        {reviews?.map((reviewDetails) => (
+          <Review
+            key={reviewDetails._id}
+            reviewDetails={reviewDetails}
+          ></Review>
+        ))}
       </div>
     </div>
   );
