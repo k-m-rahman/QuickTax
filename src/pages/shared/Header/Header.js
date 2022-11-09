@@ -149,8 +149,8 @@ const Header = () => {
                     </Link>
                   </Dropdown.Header>
 
-                  <Dropdown.Item>
-                    <button onClick={handleLogout}>Sign out</button>
+                  <Dropdown.Item onClick={handleLogout}>
+                    <button>Sign out</button>
                   </Dropdown.Item>
                 </Dropdown>
               </span>

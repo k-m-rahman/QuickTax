@@ -2,6 +2,7 @@ import { Button } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import ServiceCard from "../../shared/ServiceCard/ServiceCard";
+import { FaAngleRight } from "react-icons/fa";
 
 const HomeServices = ({ services }) => {
   return (
@@ -20,9 +21,19 @@ const HomeServices = ({ services }) => {
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </div>
-      <Button gradientMonochrome="purple" className="mx-auto w-32">
-        <Link to="/services">See All</Link>
-      </Button>
+      <div className="flex justify-center items-center">
+        <Link to="/services">
+          <Button
+            gradientMonochrome="purple"
+            className="mx-auto mt-5 w-32 hover:scale-110 delay-75"
+          >
+            <span className="flex items-center gap-2 ">
+              <span>See All</span>
+              <FaAngleRight></FaAngleRight>
+            </span>
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

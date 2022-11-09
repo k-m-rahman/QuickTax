@@ -22,10 +22,11 @@ const Intro = () => {
             detail of your return is correct. Focus on the important things, not
             your tax returns.
           </p>
-          <Button className="w-fit mx-auto my-5">
-            {" "}
-            <Link to="/contactMe">Contact Me</Link>{" "}
-          </Button>
+          <div className="flex justify-center items-center">
+            <Link to="/contactMe">
+              <Button className="w-fit mx-auto my-5"> Contact Me</Button>
+            </Link>
+          </div>
         </div>
         <div className=" w-3/4 mx-auto md:w-3/5">
           <Lottie animationData={taxAnimation} loop={true}></Lottie>

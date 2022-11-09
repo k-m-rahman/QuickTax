@@ -17,9 +17,13 @@ const Slider = () => {
             <p className="font-semibold  w-fit  mx-auto">
               Tax Professionals for Businesses
             </p>
-            <Button className="mx-auto md:mt-5" color="info">
-              Contact Me
-            </Button>
+            <div className="flex justify-center items-center">
+              <Link to="/contactMe">
+                <Button className="mx-auto md:mt-5" color="info">
+                  Contact Me
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="h-full bg-no-repeat  text-white bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80')] flex justify-center items-center">
@@ -33,9 +37,13 @@ const Slider = () => {
             <p className="font-semibold  w-fit  mx-auto">
               Tax Professionals for Businesses
             </p>
-            <Button className="mx-auto md:mt-5" color="info">
-              Contact Me
-            </Button>
+            <div className="flex justify-center items-center">
+              <Link to="/contactMe">
+                <Button className="mx-auto md:mt-5" color="info">
+                  Contact Me
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="h-full bg-no-repeat  text-white bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1514108225820-2b602873ac36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80')] flex justify-center items-center">
@@ -50,9 +58,13 @@ const Slider = () => {
               Tax Professionals for Businesses
             </p>
 
-            <Button className="mx-auto md:mt-5" color="info">
-              <Link to="/contactMe">Contact Me</Link>
-            </Button>
+            <div className="flex justify-center items-center">
+              <Link to="/contactMe">
+                <Button className="mx-auto md:mt-5" color="info">
+                  Contact Me
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </Carousel>

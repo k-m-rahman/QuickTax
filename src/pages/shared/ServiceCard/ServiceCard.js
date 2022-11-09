@@ -5,6 +5,7 @@ import "./ServiceCard.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { FaArrowRight } from "react-icons/fa";
 
 const ServiceCard = ({ service }) => {
   const { _id, title, price, description, image, rating } = service;
@@ -33,8 +34,10 @@ const ServiceCard = ({ service }) => {
         </p>
 
         <Link to={`/serviceDetails/${_id}`}>
-          <Button className="w-full" gradientMonochrome="cyan">
-            See Details
+          <Button className="w-full " gradientMonochrome="cyan">
+            <span className="flex items-center gap-2">
+              <span>See Details</span> <FaArrowRight></FaArrowRight>
+            </span>
           </Button>
         </Link>
       </Card>

@@ -66,7 +66,7 @@ const MyReviews = () => {
         <div className="w-60 mx-auto  flex justify-start">
           <Lottie animationData={noDataAnime} loop={true}></Lottie>
         </div>
-        <h1 className="capitalize text-3xl md:text-4xl font-semibold text-slate-700 dark:text-slate-100 text-center mb-16">
+        <h1 className="capitalize text-3xl md:text-4xl font-bold text-slate-700 dark:text-slate-100 text-center mb-16">
           No reviews to show !!!
         </h1>
       </div>
