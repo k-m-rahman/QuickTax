@@ -122,19 +122,19 @@ const WriteReview = ({ service, setForUpdate }) => {
               </div>
               <div className="flex items-center gap-2">
                 <Radio id="2" name="rating" value="2" />
-                <Label htmlFor="1">2</Label>
+                <Label htmlFor="2">2</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Radio id="3" name="rating" value="3" />
-                <Label htmlFor="1">3</Label>
+                <Label htmlFor="3">3</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Radio id="4" name="rating" value="4"></Radio>
-                <Label htmlFor="1">4</Label>
+                <Label htmlFor="4">4</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Radio id="5" name="rating" value="5" defaultChecked={true} />
-                <Label htmlFor="1">5</Label>
+                <Label htmlFor="5">5</Label>
               </div>
             </fieldset>
 

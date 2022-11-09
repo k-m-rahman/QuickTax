@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# **QuickTax (Client Side)**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **_This project was built with -_**
 
-## Available Scripts
+- **React**
+- **React Router**
+- **Tailwind CSS**
+- **Component Library: Flowbite React**
+- **Firebase Authentication**
+- **MongoDb**
+- **Express Js**
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## **Firebase Live Site Link :** [QuickTax](https://quick-tax-fa48f.web.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Server Side Repository :** [QuickTax Server Side](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-k-m-rahman)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+## **API**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Server -> https://quick-tax-server-side.vercel.app/
 
-### `npm run build`
+All Services -> https://quick-tax-server-side.vercel.app/services
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Single Service -> https://quick-tax-server-side.vercel.app/services/service_id
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Example -> https://quick-tax-server-side.vercel.app/services/636bd76ca63cd9870abae92d
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All Reviews -> https://quick-tax-server-side.vercel.app/reviews
 
-### `npm run eject`
+Single Service Reviews -> https://quick-tax-server-side.vercel.app/reviews?serviceId=service_id
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Example -> https://quick-tax-server-side.vercel.app/reviews?serviceId=636a1cdcffbe0bb19192b3ed
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## **Description**
 
-## Learn More
+- a tax services review website
+- reviews can be given in each service
+- everyone can see all the reviews in every service's details page
+- everyone can add a new service
+- you can delete or update your reviews
+- the site is moderately interactive and have some cool toasts and alert
+- there are some blogs in our site, feel free to browse them
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Resource & Credits:**
 
-### Code Splitting
+1.Tailwind Component -> [Flowbite-react](https://flowbite-react.com/)
+<br>
+2.Icon -> [React Icons](https://react-icons.github.io/react-icons/)
+<br>
+3.Animation -> [LottieFiles](https://lottiefiles.com/) and [AOS](https://michalsnik.github.io/aos/)
+<br>
+4.Toast -> [React Hot Toast](https://react-hot-toast.com/)
+<br>
+5.Alert -> [Sweet Alert](https://sweetalert.js.org/)
+<br>
+6.Photo View -> [React Photo View](https://react-photo-view.vercel.app/en-US)
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# **To Run The Project**
 
-### Making a Progressive Web App
+- ### **Clone the project**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- ### **npm install**
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ### **npm start**

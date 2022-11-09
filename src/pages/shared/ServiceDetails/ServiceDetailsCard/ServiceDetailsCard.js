@@ -3,6 +3,7 @@ import { Card } from "flowbite-react";
 import "./ServiceDetailsCard.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { FaStar } from "react-icons/fa";
 
 const ServiceDetailsCard = ({ service }) => {
   const { _id, image, title, description, price, rating } = service;
@@ -11,7 +12,7 @@ const ServiceDetailsCard = ({ service }) => {
     AOS.init();
   }, []);
 
-  const priceWithCommas = price.toLocaleString("en");
+  const priceWithCommas = Number(price).toLocaleString("en");
   return (
     <div className="flex justify-center ">
       <Card
@@ -25,7 +26,11 @@ const ServiceDetailsCard = ({ service }) => {
           {title}
         </h5>
         <h4 className="text-amber-400  font-bold text-xl flex flex-col gap-2 ">
-          <span>Rating: {rating}</span>
+          <p className="text-amber-500 flex gap-1">
+            {[...Array(parseInt(rating))].map((x, idx) => (
+              <FaStar key={idx}></FaStar>
+            ))}
+          </p>
           <span> ${priceWithCommas}</span>
         </h4>
 

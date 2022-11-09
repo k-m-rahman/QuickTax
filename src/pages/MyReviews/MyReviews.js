@@ -1,4 +1,4 @@
-import { Button, Modal, Table } from "flowbite-react";
+import { Button, Modal, Spinner, Table } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import ReviewRow from "./ReviewRow/ReviewRow";
@@ -11,6 +11,7 @@ const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState(null);
   const [forUpdateOrDelete, setForUpdateOrDelete] = useState(false);
+  const [loading, setLoading] = useState(true);
   // const [confirm, setConfirm] = useState(false);
   // const [showModal, setShowModal] = useState(false);
   useEffect(() => {
@@ -18,7 +19,10 @@ const MyReviews = () => {
       `https://quick-tax-server-side.vercel.app/reviews?email=${user.email}`
     )
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+        setLoading(false);
+      });
   }, [forUpdateOrDelete, user.email]);
 
   console.log(reviews);
@@ -42,6 +46,11 @@ const MyReviews = () => {
     }
   };
 
+  // updating a review
+  const handleUpdate = async (id) => {
+    console.log(id);
+  };
+
   // const displayModal = () => {
   //   setShowModal(true);
   //   return confirm;
@@ -60,8 +69,20 @@ const MyReviews = () => {
   //   setShowModal(false);
   // };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <Spinner
+          className="mt-10 "
+          aria-label="Extra large spinner example"
+          size="xl"
+        />
+      </div>
+    );
+  }
+
   // checking if the user have any reviews
-  if (reviews?.length === 0) {
+  else if (reviews?.length === 0) {
     return (
       <div>
         <div className="w-60 mx-auto  flex justify-start">
@@ -74,67 +95,69 @@ const MyReviews = () => {
     );
   }
   // if the user have reviews then those reviews are showing in a table
-  return (
-    <div>
-      <h2 className="capitalize text-center text-4xl md:text-5xl font-semibold text-slate-700 dark:text-slate-100 mb-10">
-        Your Reviews
-      </h2>
-      <div className="p-5">
-        <Table>
-          <Table.Head>
-            <Table.HeadCell>Service name</Table.HeadCell>
-            <Table.HeadCell>Review</Table.HeadCell>
-            <Table.HeadCell>Price</Table.HeadCell>
-            <Table.HeadCell>
-              <span className="sr-only">Edit</span>
-            </Table.HeadCell>
-          </Table.Head>
-          <Table.Body className="divide-y">
-            {reviews?.map((review) => (
-              <ReviewRow
-                key={review._id}
-                ownReview={review}
-                handleDelete={handleDelete}
-              ></ReviewRow>
-            ))}
-          </Table.Body>
-        </Table>
+  else {
+    return (
+      <div>
+        <h2 className="capitalize text-center text-4xl md:text-5xl font-semibold text-slate-700 dark:text-slate-100 mb-10">
+          Your Reviews
+        </h2>
+        <div className="p-5">
+          <Table>
+            <Table.Head>
+              <Table.HeadCell>Service name</Table.HeadCell>
+              <Table.HeadCell>Review</Table.HeadCell>
+              <Table.HeadCell>Price</Table.HeadCell>
+              <Table.HeadCell>
+                <span className="sr-only">Edit</span>
+              </Table.HeadCell>
+            </Table.Head>
+            <Table.Body className="divide-y">
+              {reviews?.map((review) => (
+                <ReviewRow
+                  key={review._id}
+                  ownReview={review}
+                  handleDelete={handleDelete}
+                ></ReviewRow>
+              ))}
+            </Table.Body>
+          </Table>
 
-        {/* modal */}
-        {/* <React.Fragment>
-          <Modal
-            show={showModal}
-            size="md"
-            popup={true}
-            onClose={() => setShowModal(false)}
-          >
-            <Modal.Header />
-            <Modal.Body>
-              <div className="text-center ">
-               
-                <Lottie
-                  className="h-14 w-14 mx-auto mb-4 text-gray-400 dark:text-gray-200"
-                  animationData={attention}
-                  loop={true}
-                ></Lottie>
-                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                  Are you sure you want to delete this product?
-                </h3>
-                <div className="flex justify-center gap-4">
-                  <Button color="failure" onClick={yesSure}>
-                    Yes, I'm sure
-                  </Button>
-                  <Button color="gray" onClick={noCancel}>
-                    No, cancel
-                  </Button>
+          {/* modal */}
+          {/* <React.Fragment>
+            <Modal
+              show={showModal}
+              size="md"
+              popup={true}
+              onClose={() => setShowModal(false)}
+            >
+              <Modal.Header />
+              <Modal.Body>
+                <div className="text-center ">
+                 
+                  <Lottie
+                    className="h-14 w-14 mx-auto mb-4 text-gray-400 dark:text-gray-200"
+                    animationData={attention}
+                    loop={true}
+                  ></Lottie>
+                  <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    Are you sure you want to delete this product?
+                  </h3>
+                  <div className="flex justify-center gap-4">
+                    <Button color="failure" onClick={yesSure}>
+                      Yes, I'm sure
+                    </Button>
+                    <Button color="gray" onClick={noCancel}>
+                      No, cancel
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Modal.Body>
-          </Modal>
-        </React.Fragment> */}
+              </Modal.Body>
+            </Modal>
+          </React.Fragment> */}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default MyReviews;

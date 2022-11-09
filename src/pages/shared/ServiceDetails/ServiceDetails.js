@@ -76,7 +76,7 @@ const ServiceDetails = () => {
         )
       ) : (
         <div>
-          <h4 className="text-center capitalize text-2xl md:text-4xl font-semibold text-slate-700 dark:text-slate-100 ">
+          <h4 className="text-center capitalize text-2xl md:text-4xl font-semibold text-slate-700 dark:text-slate-100 my-10">
             Please{" "}
             <span className="text-blue-500 dark:text-amber-500">
               {" "}

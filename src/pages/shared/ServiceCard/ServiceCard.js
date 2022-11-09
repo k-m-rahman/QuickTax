@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 
 const ServiceCard = ({ service }) => {
   const { _id, title, price, description, image, rating } = service;
-  const priceWithCommas = price.toLocaleString("en");
+  const priceWithCommas = Number(price).toLocaleString("en");
 
   useEffect(() => {
     AOS.init();
