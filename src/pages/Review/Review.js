@@ -1,9 +1,18 @@
 import { Card } from "flowbite-react";
 import React from "react";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import "./Review.css";
 
 const Review = ({ reviewDetails }) => {
+  const yearMonthDayDateFormat = (date) => {
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = date.getFullYear();
+
+    date = mm + "/" + dd + "/" + yyyy;
+    return date;
+  };
+
   const {
     _id,
     serviceTitle,
@@ -13,7 +22,19 @@ const Review = ({ reviewDetails }) => {
     rating,
     email,
     review,
+    date,
   } = reviewDetails;
+
+  let reviewDate = new Date(date);
+
+  let currentDate = new Date();
+
+  reviewDate = new Date(yearMonthDayDateFormat(reviewDate));
+  currentDate = new Date(yearMonthDayDateFormat(currentDate));
+
+  const diffInMs = Math.abs(currentDate - reviewDate);
+  const daysAgo = diffInMs / (1000 * 60 * 60 * 24);
+
   return (
     <div className="mx-auto w-full">
       <Card className="review rounded-3xl">
@@ -28,11 +49,20 @@ const Review = ({ reviewDetails }) => {
               <h5 className="mb-1 text-lg font-medium text-gray-900 dark:text-white">
                 {reviewerName}
               </h5>
-              <p className="text-amber-500 flex gap-1">
-                {[...Array(parseInt(rating))].map((x, idx) => (
-                  <FaStar key={idx}></FaStar>
-                ))}
-              </p>
+              <div className="flex gap-3 items-center">
+                <p className="text-amber-500 flex gap-1">
+                  {[...Array(parseInt(rating))].map((x, idx) => (
+                    <FaStar key={idx}></FaStar>
+                  ))}
+                </p>
+                <span>
+                  {isNaN(daysAgo) ? (
+                    ""
+                  ) : (
+                    <span className="text-slate-600 dark:text-slate-100">{`${daysAgo} days ago`}</span>
+                  )}
+                </span>
+              </div>
             </div>
           </div>
           <span className="text-sm text-gray-500 italic dark:text-gray-400">

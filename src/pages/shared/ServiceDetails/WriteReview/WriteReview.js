@@ -1,9 +1,11 @@
 import { Button, Label, Radio, Textarea, TextInput } from "flowbite-react";
 import React, { useContext, useRef } from "react";
 import toast from "react-hot-toast";
+import { ScrollRestoration } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
+import { FaStar } from "react-icons/fa";
 
-const WriteReview = ({ service }) => {
+const WriteReview = ({ service, setForUpdate }) => {
   const { user } = useContext(AuthContext);
   const displayNameRef = useRef(user?.displayName);
   const photoURLRef = useRef(user?.photoURL);
@@ -16,6 +18,10 @@ const WriteReview = ({ service }) => {
     const photo = form.photo.value;
     const review = form.review.value;
     const rating = parseInt(form.rating.value);
+
+    // getting the time and date of the review
+    const date = String(new Date());
+
     console.log(rating);
     const reviewObject = {
       serviceId: service._id,
@@ -25,10 +31,29 @@ const WriteReview = ({ service }) => {
       reviewerName: name,
       email: user.email,
       reviewerImage: photo,
-      rating: review,
+      rating: rating,
+      date,
     };
 
-    toast.success("Your review added successfully");
+    fetch("https://quick-tax-server-side.vercel.app/reviews", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(reviewObject),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Your review added successfully");
+          setForUpdate((prev) => !prev);
+          form.reset();
+          <ScrollRestoration></ScrollRestoration>;
+        }
+      });
   };
   return (
     <div>
@@ -104,7 +129,7 @@ const WriteReview = ({ service }) => {
                 <Label htmlFor="1">3</Label>
               </div>
               <div className="flex items-center gap-2">
-                <Radio id="4" name="rating" value="4" />
+                <Radio id="4" name="rating" value="4"></Radio>
                 <Label htmlFor="1">4</Label>
               </div>
               <div className="flex items-center gap-2">

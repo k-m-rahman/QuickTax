@@ -23,7 +23,7 @@ const ServiceDetails = () => {
     )
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [_id]);
+  }, [_id, forUpdate]);
 
   // console.log(reviews);
   return (
@@ -45,7 +45,10 @@ const ServiceDetails = () => {
       </div>
       {/* add review section */}
       {user ? (
-        <WriteReview service={service}></WriteReview>
+        <WriteReview
+          setForUpdate={setForUpdate}
+          service={service}
+        ></WriteReview>
       ) : (
         <div>
           <h4 className="text-center capitalize text-2xl md:text-4xl font-semibold text-slate-700 dark:text-slate-100 ">
