@@ -43,17 +43,21 @@ const ServiceDetails = () => {
       <ServiceDetailsCard key={_id} service={service}></ServiceDetailsCard>
 
       {/* reviews */}
-      <h3 className="capitalize mt-20 text-center text-3xl w-3/4 mx-auto md:text-4xl font-bold dark:text-slate-100 italic">
-        Reviews of our valued clients
-      </h3>
-      <div className="grid grid-cols-1 w-3/4 mx-auto my-10 gap-5">
-        {reviews?.map((reviewDetails) => (
-          <Review
-            key={reviewDetails._id}
-            reviewDetails={reviewDetails}
-          ></Review>
-        ))}
-      </div>
+      {reviews?.length > 0 && (
+        <div>
+          <h3 className="capitalize mt-20 text-center text-3xl w-3/4 mx-auto md:text-4xl font-bold dark:text-slate-100 italic">
+            Reviews of our valued clients
+          </h3>
+          <div className="grid grid-cols-1 w-3/4 mx-auto my-10 gap-5">
+            {reviews?.map((reviewDetails) => (
+              <Review
+                key={reviewDetails._id}
+                reviewDetails={reviewDetails}
+              ></Review>
+            ))}
+          </div>
+        </div>
+      )}
       {/* add review section */}
       {user ? (
         reviewGiven ? (
