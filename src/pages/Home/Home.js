@@ -5,6 +5,7 @@ import ServiceCard from "../shared/ServiceCard/ServiceCard";
 import HomeServices from "./HomeServices/HomeServices";
 import Intro from "./Intro/Intro";
 import Slider from "./Slider/Slider";
+import WhyChooseMe from "./WhyChooseMe/WhyChooseMe";
 
 const Home = () => {
   const services = useLoaderData();
@@ -14,6 +15,7 @@ const Home = () => {
       <Slider></Slider>
       <Intro></Intro>
       <HomeServices services={services}></HomeServices>
+      <WhyChooseMe></WhyChooseMe>
     </div>
   );
 };
