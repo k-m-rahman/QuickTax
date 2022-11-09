@@ -9,11 +9,13 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <Spinner
-        className="mt-10"
-        aria-label="Extra large spinner example"
-        size="xl"
-      />
+      <div className="flex justify-center items-center">
+        <Spinner
+          className="mt-10 "
+          aria-label="Extra large spinner example"
+          size="xl"
+        />
+      </div>
     );
   }
 

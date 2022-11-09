@@ -153,7 +153,7 @@ const WriteReview = ({ service, setForUpdate }) => {
               />
             </div>
 
-            <Button type="submit">Update</Button>
+            <Button type="submit">Add Review</Button>
           </form>
         </div>
       </div>

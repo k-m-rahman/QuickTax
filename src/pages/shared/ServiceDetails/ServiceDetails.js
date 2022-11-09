@@ -12,10 +12,21 @@ const ServiceDetails = () => {
 
   const [reviews, setReviews] = useState(null);
   const [forUpdate, setForUpdate] = useState(false);
+  const [reviewGiven, setReviewGiven] = useState(false);
 
   const { user } = useContext(AuthContext);
 
   const location = useLocation();
+
+  // checking whether the user has given any review of this specific service already
+
+  useEffect(() => {
+    reviews?.forEach((review) => {
+      if (review?.email === user?.email) {
+        setReviewGiven(true);
+      }
+    });
+  }, [user?.email, reviews]);
 
   useEffect(() => {
     fetch(
@@ -45,10 +56,20 @@ const ServiceDetails = () => {
       </div>
       {/* add review section */}
       {user ? (
-        <WriteReview
-          setForUpdate={setForUpdate}
-          service={service}
-        ></WriteReview>
+        reviewGiven ? (
+          <h2 className="capitalize text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-100 text-center my-20 w-3/4 mx-auto">
+            You can update your reviews in{" "}
+            <Link className="text-blue-500 dark:text-amber-500" to="/myReviews">
+              my reviews
+            </Link>{" "}
+            page
+          </h2>
+        ) : (
+          <WriteReview
+            setForUpdate={setForUpdate}
+            service={service}
+          ></WriteReview>
+        )
       ) : (
         <div>
           <h4 className="text-center capitalize text-2xl md:text-4xl font-semibold text-slate-700 dark:text-slate-100 ">
