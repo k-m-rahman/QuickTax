@@ -1,9 +1,11 @@
 import { Spinner } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import ServiceCard from "../shared/ServiceCard/ServiceCard";
 
 const Services = () => {
+  useTitle("Services");
   // const services = useLoaderData();
   const [services, setServices] = useState(null);
   const [loading, setLoading] = useState(true);

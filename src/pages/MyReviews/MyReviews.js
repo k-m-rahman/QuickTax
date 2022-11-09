@@ -6,8 +6,10 @@ import noDataAnime from "../../assets/no-data.json";
 import attention from "../../assets/attention.json";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const MyReviews = () => {
+  useTitle("My Reviews");
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState(null);
   const [forUpdateOrDelete, setForUpdateOrDelete] = useState(false);

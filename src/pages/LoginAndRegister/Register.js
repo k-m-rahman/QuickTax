@@ -4,8 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 import swal from "sweetalert";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const [error, setError] = useState("");
   const { signUp, updateUserProfile, verifyEmail, setLoading, setUser } =
     useContext(AuthContext);
