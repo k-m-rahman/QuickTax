@@ -15,6 +15,7 @@ import { FaMoon, FaSun, FaSearch } from "react-icons/fa";
 import logo from "../../../assets/tax.svg";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import "./Header.css";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -46,7 +47,7 @@ const Header = () => {
 
   return (
     <div className="shadow-md md:pb-5 lg:pb-0 bg-[#c1c2ff] text-center sticky top-0 z-10 dark:bg-slate-800">
-      <Navbar className="bg-[#c1c2ff]  rounded-none pt-4 pb-6 " fluid={true}>
+      <Navbar className="nav-bg  rounded-none pt-4 pb-6 " fluid={true}>
         <NavLink className="flex " to="/">
           <div className="flex gap-2">
             <span className="bg-amber-500 p-2 rounded-full">

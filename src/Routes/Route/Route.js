@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import AddService from "../../pages/AddService/AddService";
+import ContactMe from "../../pages/ContactMe/ContactMe";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/LoginAndRegister/Login";
 import Register from "../../pages/LoginAndRegister/Register";
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
           fetch(
             `https://quick-tax-server-side.vercel.app/services/${params.id}`
           ),
+      },
+      {
+        path: "/contactMe",
+        element: <ContactMe></ContactMe>,
       },
     ],
   },

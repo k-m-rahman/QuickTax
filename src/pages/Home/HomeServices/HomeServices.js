@@ -6,11 +6,11 @@ import ServiceCard from "../../shared/ServiceCard/ServiceCard";
 const HomeServices = ({ services }) => {
   return (
     <div>
-      <div className="flex flex-col gap-3 mb-10 mt-20">
-        <h1 className="text-3xl md:text-5xl capitalize text-center font-semibold">
+      <div className="flex flex-col gap-3 mb-10 mt-20 text-center">
+        <h1 className="capitalize text-4xl md:text-5xl font-semibold text-slate-700 dark:text-slate-100 ">
           Here's how I can help you
         </h1>
-        <p className="font-semibold text-slate-600 text-center">
+        <p className="text-xl  text-slate-500 dark:text-slate-200 ">
           Browse my services and find the perfect tax preparation solution
           you've been searching for.
         </p>

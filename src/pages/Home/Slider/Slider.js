@@ -1,5 +1,6 @@
 import { Button, Carousel } from "flowbite-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   return (
@@ -48,8 +49,9 @@ const Slider = () => {
             <p className="font-semibold  w-fit  mx-auto">
               Tax Professionals for Businesses
             </p>
+
             <Button className="mx-auto md:mt-5" color="info">
-              Contact Me
+              <Link to="/contactMe">Contact Me</Link>
             </Button>
           </div>
         </div>

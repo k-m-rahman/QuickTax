@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "flowbite-react";
+import "./ServiceDetailsCard.css";
 
 const ServiceDetailsCard = ({ service }) => {
   const { _id, image, title, description, price, rating } = service;
@@ -7,7 +8,7 @@ const ServiceDetailsCard = ({ service }) => {
   return (
     <div className="flex justify-center ">
       <Card
-        className="card bg-[rgb(252,241,255)] mx-5 md:mx-0 lg:min-w-[900px]"
+        className="card bg-color mx-5 md:mx-0 lg:min-w-[900px]"
         horizontal={true}
         imgSrc={image}
         data-aos="zoom-in-up"

@@ -1,6 +1,7 @@
 import { Card } from "flowbite-react";
 import React from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import "./Review.css";
 
 const Review = ({ reviewDetails }) => {
   const {
@@ -15,7 +16,7 @@ const Review = ({ reviewDetails }) => {
   } = reviewDetails;
   return (
     <div className="mx-auto w-full">
-      <Card className="bg-[rgb(203,213,225)] rounded-3xl">
+      <Card className="review rounded-3xl">
         <div className="flex flex-col  pb-10">
           <div className="flex gap-5">
             <img
