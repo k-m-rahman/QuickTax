@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "flowbite-react";
 import "./ServiceDetailsCard.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ServiceDetailsCard = ({ service }) => {
   const { _id, image, title, description, price, rating } = service;
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const priceWithCommas = price.toLocaleString("en");
   return (
     <div className="flex justify-center ">

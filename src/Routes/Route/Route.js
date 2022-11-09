@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://quick-tax-server-side.vercel.app/services/${params.id}`
+            `https://quick-tax-server-side-k-m-rahman.vercel.app/services/${params.id}`
           ),
       },
       {

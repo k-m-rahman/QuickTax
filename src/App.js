@@ -5,6 +5,7 @@ import { router } from "./Routes/Route/Route";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "./contexts/ThemeProvider";
 import { getStoredDarkModeData } from "./utils/fakeDb";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
@@ -23,6 +24,7 @@ function App() {
       }
     >
       <RouterProvider router={router}></RouterProvider>
+      <Toaster></Toaster>
     </div>
   );
 }
