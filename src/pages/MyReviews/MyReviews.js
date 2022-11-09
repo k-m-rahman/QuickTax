@@ -1,9 +1,9 @@
-import { Button, Modal, Spinner, Table } from "flowbite-react";
+import { Spinner, Table } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import ReviewRow from "./ReviewRow/ReviewRow";
 import noDataAnime from "../../assets/no-data.json";
-import attention from "../../assets/attention.json";
+
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import useTitle from "../../hooks/useTitle";
@@ -14,8 +14,7 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState(null);
   const [forUpdateOrDelete, setForUpdateOrDelete] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const [confirm, setConfirm] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     fetch(
       `https://quick-tax-server-side.vercel.app/reviews?email=${user.email}`
@@ -42,35 +41,12 @@ const MyReviews = () => {
           setForUpdateOrDelete((prev) => !prev);
           if (data.deletedCount > 0) {
             toast.error("Deleted the review successfully");
-            // setConfirm(false);
           }
         });
     }
   };
 
-  // updating a review
-  const handleUpdate = async (id) => {
-    console.log(id);
-  };
-
-  // const displayModal = () => {
-  //   setShowModal(true);
-  //   return confirm;
-  // };
-
-  // console.log(confirm);
-
-  // // modal confirm or not confirm
-  // const yesSure = () => {
-  //   setConfirm(true);
-  //   setShowModal(false);
-  // };
-
-  // const noCancel = () => {
-  //   setConfirm(false);
-  //   setShowModal(false);
-  // };
-
+  // conditional rendering
   if (loading) {
     return (
       <div className="flex justify-center items-center">
@@ -119,43 +95,11 @@ const MyReviews = () => {
                   key={review._id}
                   ownReview={review}
                   handleDelete={handleDelete}
+                  setForUpdateOrDelete={setForUpdateOrDelete}
                 ></ReviewRow>
               ))}
             </Table.Body>
           </Table>
-
-          {/* modal */}
-          {/* <React.Fragment>
-            <Modal
-              show={showModal}
-              size="md"
-              popup={true}
-              onClose={() => setShowModal(false)}
-            >
-              <Modal.Header />
-              <Modal.Body>
-                <div className="text-center ">
-                 
-                  <Lottie
-                    className="h-14 w-14 mx-auto mb-4 text-gray-400 dark:text-gray-200"
-                    animationData={attention}
-                    loop={true}
-                  ></Lottie>
-                  <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                    Are you sure you want to delete this product?
-                  </h3>
-                  <div className="flex justify-center gap-4">
-                    <Button color="failure" onClick={yesSure}>
-                      Yes, I'm sure
-                    </Button>
-                    <Button color="gray" onClick={noCancel}>
-                      No, cancel
-                    </Button>
-                  </div>
-                </div>
-              </Modal.Body>
-            </Modal>
-          </React.Fragment> */}
         </div>
       </div>
     );
