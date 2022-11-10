@@ -22,8 +22,6 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://quick-tax-server-side.vercel.app/services?limit=3"),
       },
       {
         path: "/services",

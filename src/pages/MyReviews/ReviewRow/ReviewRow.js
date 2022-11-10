@@ -1,6 +1,8 @@
 import { Button, Label, Modal, Radio, Table, Textarea } from "flowbite-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import deleteIcon from "../../../assets/icons/delete.svg";
+import updateIcon from "../../../assets/icons/update.svg";
 
 const ReviewRow = ({ ownReview, handleDelete, setForUpdateOrDelete }) => {
   const { serviceTitle, rating, review, _id } = ownReview;
@@ -50,10 +52,10 @@ const ReviewRow = ({ ownReview, handleDelete, setForUpdateOrDelete }) => {
               gradientMonochrome="failure"
               onClick={() => handleDelete(_id)}
             >
-              X
+              Delete <img className="w-6 ml-2" src={deleteIcon} alt="" />
             </Button>
             <Button gradientMonochrome="info" onClick={() => displayModal(_id)}>
-              Update
+              Update <img className="w-6 ml-2" src={updateIcon} alt=""></img>
             </Button>
           </div>
         </Table.Cell>

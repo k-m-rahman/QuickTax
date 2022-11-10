@@ -3,20 +3,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ServiceCard.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { FaArrowRight } from "react-icons/fa";
 
 const ServiceCard = ({ service }) => {
   const { _id, title, price, description, image, rating } = service;
   const priceWithCommas = Number(price).toLocaleString("en");
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
-    <div className="max-w-sm" data-aos="flip-left" data-aos-duration="1200">
+    <div className="max-w-sm">
       <Card className="serviceCard  ">
         <PhotoProvider>
           <PhotoView src={image}>

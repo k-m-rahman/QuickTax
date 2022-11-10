@@ -2,10 +2,8 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ServiceCard from "../shared/ServiceCard/ServiceCard";
 import converter from "number-to-words";
-import useTitle from "../../hooks/useTitle";
 
 const SearchedServices = () => {
-  useTitle("Searched services");
   const services = useLoaderData();
   return (
     <div>
