@@ -5,7 +5,7 @@ import ReviewRow from "./ReviewRow/ReviewRow";
 import noDataAnime from "../../assets/no-data.json";
 
 import Lottie from "lottie-react";
-import toast from "react-hot-toast";
+
 import useTitle from "../../hooks/useTitle";
 
 const MyReviews = () => {
@@ -32,28 +32,7 @@ const MyReviews = () => {
         setReviews(data);
         setLoading(false);
       });
-  }, [forUpdateOrDelete, user.email, logout]);
-
-  // deleting a review (delete)
-  const handleDelete = async (id) => {
-    const agree = window.confirm("Are you sure to delete the review?");
-    if (agree) {
-      fetch(`https://quick-tax-server-side.vercel.app/reviews/${id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setForUpdateOrDelete((prev) => !prev);
-          if (data.deletedCount > 0) {
-            toast.error("Deleted the review successfully");
-          }
-        });
-    }
-  };
+  }, [forUpdateOrDelete, user?.email, logout]);
 
   // conditional rendering
   if (loading) {
@@ -84,7 +63,7 @@ const MyReviews = () => {
   // if the user have reviews then those reviews are showing in a table
   else {
     return (
-      <div>
+      <div className="pb-40 ">
         <h2 className="capitalize text-center text-4xl md:text-5xl font-semibold text-slate-700 dark:text-slate-100 mb-10">
           Your Reviews
         </h2>
@@ -103,8 +82,8 @@ const MyReviews = () => {
                 <ReviewRow
                   key={review._id}
                   ownReview={review}
-                  handleDelete={handleDelete}
                   setForUpdateOrDelete={setForUpdateOrDelete}
+                  setLoading={setLoading}
                 ></ReviewRow>
               ))}
             </Table.Body>

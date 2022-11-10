@@ -14,8 +14,6 @@ const Services = () => {
 
   const totalPages = Math.ceil(totalCards / cardsPerPage);
 
-  console.log("cards per page,", cardsPerPage);
-  console.log("current page,", currentPage);
   //-------------------
   useEffect(() => {
     fetch(
@@ -23,7 +21,6 @@ const Services = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTotalCards(data.count);
         setServices(data.services);
         setLoading(false);
