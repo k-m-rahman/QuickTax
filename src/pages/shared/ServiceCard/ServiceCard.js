@@ -10,7 +10,7 @@ const ServiceCard = ({ service }) => {
   const priceWithCommas = Number(price).toLocaleString("en");
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-md mx-auto min-w-full">
       <Card className="serviceCard  ">
         <PhotoProvider>
           <PhotoView src={image}>
