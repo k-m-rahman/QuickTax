@@ -10,7 +10,7 @@ import useTitle from "../../hooks/useTitle";
 
 const MyReviews = () => {
   useTitle("My Reviews");
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [reviews, setReviews] = useState(null);
   const [forUpdateOrDelete, setForUpdateOrDelete] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -22,12 +22,17 @@ const MyReviews = () => {
         authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logout();
+        }
+        return res.json();
+      })
       .then((data) => {
         setReviews(data);
         setLoading(false);
       });
-  }, [forUpdateOrDelete, user.email]);
+  }, [forUpdateOrDelete, user.email, logout]);
 
   // deleting a review (delete)
   const handleDelete = async (id) => {
