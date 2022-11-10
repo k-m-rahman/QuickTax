@@ -5,12 +5,19 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 import swal from "sweetalert";
 import useTitle from "../../hooks/useTitle";
+import { getAuthToken } from "../../services/getAuthToken/getAuthToken";
 
 const Register = () => {
   useTitle("Register");
   const [error, setError] = useState("");
-  const { signUp, updateUserProfile, verifyEmail, setLoading, setUser } =
-    useContext(AuthContext);
+  const {
+    signUp,
+    updateUserProfile,
+    verifyEmail,
+    setLoading,
+    setUser,
+    setForUpdate,
+  } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,6 +46,7 @@ const Register = () => {
     signUp(email, password)
       .then((result) => {
         const user = result.user;
+        getAuthToken(user);
         setUser(user);
         form.reset();
         setError("");
@@ -75,6 +83,7 @@ const Register = () => {
 
     updateUserProfile(profile)
       .then(() => {
+        setForUpdate((prev) => !prev);
         console.log("User name and photo updated");
       })
       .catch((error) => console.error(error));

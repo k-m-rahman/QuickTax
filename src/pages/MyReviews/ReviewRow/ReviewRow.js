@@ -11,6 +11,7 @@ const ReviewRow = ({ ownReview, handleDelete, setForUpdateOrDelete }) => {
     setShowModal(true);
   };
 
+  // update
   const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,6 +22,7 @@ const ReviewRow = ({ ownReview, handleDelete, setForUpdateOrDelete }) => {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
       },
       body: JSON.stringify({ rating, review }),
     })

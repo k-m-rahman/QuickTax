@@ -35,10 +35,12 @@ const WriteReview = ({ service, setForUpdate }) => {
       date,
     };
 
+    // creating a review
     fetch("https://quick-tax-server-side.vercel.app/reviews", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
       },
       body: JSON.stringify(reviewObject),
     })

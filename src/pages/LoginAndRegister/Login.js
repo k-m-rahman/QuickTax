@@ -6,6 +6,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 import useTitle from "../../hooks/useTitle";
+import { getAuthToken } from "../../services/getAuthToken/getAuthToken";
 
 const Login = () => {
   useTitle("Login");
@@ -24,10 +25,12 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  // google sign in
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        getAuthToken(user);
         console.log(user);
         setError("");
         toast.success("Logged in successfully!", { duration: 2000 });
@@ -42,11 +45,13 @@ const Login = () => {
       });
   };
 
+  // github sign in
   const handleGithubSignIn = () => {
     providerLogin(gitHubProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        getAuthToken(user);
         setError("");
         toast.success("Logged in successfully!", { duration: 2000 });
         navigate(from, { replace: true });
@@ -60,6 +65,7 @@ const Login = () => {
       });
   };
 
+  // email-pass based sign in
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -68,6 +74,7 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         const user = result.user;
+        getAuthToken(user);
         form.reset();
         setError("");
         toast.success("Logged in successfully!", { duration: 2000 });

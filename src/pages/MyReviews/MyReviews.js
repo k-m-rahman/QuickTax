@@ -15,8 +15,13 @@ const MyReviews = () => {
   const [forUpdateOrDelete, setForUpdateOrDelete] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  //getting the reviews of an particular user (read)
   useEffect(() => {
-    fetch(`https://quick-tax-server-side.vercel.app/myReviews/${user.email}`)
+    fetch(`https://quick-tax-server-side.vercel.app/myReviews/${user.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -24,14 +29,15 @@ const MyReviews = () => {
       });
   }, [forUpdateOrDelete, user.email]);
 
-  console.log(reviews);
-
-  // deleting a review
+  // deleting a review (delete)
   const handleDelete = async (id) => {
     const agree = window.confirm("Are you sure to delete the review?");
     if (agree) {
       fetch(`https://quick-tax-server-side.vercel.app/reviews/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("quickTax-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {
