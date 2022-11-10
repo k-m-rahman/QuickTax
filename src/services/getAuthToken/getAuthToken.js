@@ -1,6 +1,6 @@
 export const getAuthToken = (user) => {
   const currentUser = { email: user.email };
-  fetch(`http://localhost:5000/jwt`, {
+  fetch(`https://quick-tax-server-side.vercel.app/jwt`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
