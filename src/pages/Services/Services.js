@@ -19,7 +19,7 @@ const Services = () => {
   //-------------------
   useEffect(() => {
     fetch(
-      `http://localhost:5000/services?currentPage=${currentPage}&cardsPerPage=${cardsPerPage}`
+      `https://quick-tax-server-side.vercel.app/services?currentPage=${currentPage}&cardsPerPage=${cardsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -41,6 +41,7 @@ const Services = () => {
   const handleDropDown = (event) => {
     setCurrentPage(0);
     setCardsPerPage(event.target.value);
+    window.scrollTo(0, 0);
   };
 
   if (loading) {
