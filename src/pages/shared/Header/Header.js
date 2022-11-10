@@ -139,14 +139,12 @@ const Header = () => {
                   }
                 >
                   <Dropdown.Header>
-                    <Link to="/profile">
-                      <span className="block text-sm">
-                        {user.displayName ? user?.displayName : ""}
-                      </span>
-                      <span className="block truncate text-sm font-medium">
-                        {user?.email}
-                      </span>
-                    </Link>
+                    <span className="block text-sm">
+                      {user.displayName ? user?.displayName : ""}
+                    </span>
+                    <span className="block truncate text-sm font-medium">
+                      {user?.email}
+                    </span>
                   </Dropdown.Header>
 
                   <Dropdown.Item onClick={handleLogout}>
