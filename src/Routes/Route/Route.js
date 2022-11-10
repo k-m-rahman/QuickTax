@@ -3,6 +3,7 @@ import Main from "../../layout/Main";
 import AddService from "../../pages/AddService/AddService";
 import Blogs from "../../pages/Blogs/Blogs";
 import ContactMe from "../../pages/ContactMe/ContactMe";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/LoginAndRegister/Login";
 import Register from "../../pages/LoginAndRegister/Register";
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

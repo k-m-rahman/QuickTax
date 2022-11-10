@@ -20,7 +20,7 @@ const WriteReview = ({ service, setForUpdate }) => {
     const rating = parseInt(form.rating.value);
 
     // getting the time and date of the review
-    const date = String(new Date());
+    const date = new Date();
 
     console.log(rating);
     const reviewObject = {

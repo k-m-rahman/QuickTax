@@ -29,9 +29,7 @@ const ServiceDetails = () => {
   }, [user?.email, reviews]);
 
   useEffect(() => {
-    fetch(
-      `https://quick-tax-server-side-k-m-rahman.vercel.app/reviews?serviceId=${_id}`
-    )
+    fetch(`https://quick-tax-server-side.vercel.app/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [_id, forUpdate]);

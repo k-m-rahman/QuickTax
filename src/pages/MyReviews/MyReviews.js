@@ -16,9 +16,7 @@ const MyReviews = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      `https://quick-tax-server-side.vercel.app/reviews?email=${user.email}`
-    )
+    fetch(`https://quick-tax-server-side.vercel.app/myReviews/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
