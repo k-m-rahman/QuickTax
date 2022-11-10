@@ -72,7 +72,7 @@ const MyReviews = () => {
             <Table.Head>
               <Table.HeadCell>Service name</Table.HeadCell>
               <Table.HeadCell>Review</Table.HeadCell>
-              <Table.HeadCell>Price</Table.HeadCell>
+              <Table.HeadCell>Rating</Table.HeadCell>
               <Table.HeadCell>
                 <span className="sr-only">Edit</span>
               </Table.HeadCell>
